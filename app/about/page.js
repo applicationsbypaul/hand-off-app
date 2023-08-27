@@ -1,3 +1,10 @@
+
+export const metadata = {
+  title: "HandOff Applications",
+  description: "About the HandOff Application",
+  keywords: "doctors,",
+};
+
 const AboutPage = () => {
   return (
     <div>
