@@ -1,13 +1,23 @@
+import Link from "next/link";
+
 const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
+          HandOffApp
+        </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Link</a>
+            <Link href="/about">About-Handoff</Link>
+          </li>
+          <li>
+            <Link href="/about/contact">Contact</Link>
+          </li>
+          <li>
+            <Link href="/githubusers">GitHub Users</Link>
           </li>
           <li>
             <details>
