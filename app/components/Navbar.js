@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-neutral text-neutral-content">
       <div className="flex-1">
-        <Link href="/" className="btn btn-ghost normal-case text-xl">
+        <Link href="/" className="btn btn-primary normal-case text-xl">
           HandOffApp
         </Link>
       </div>
@@ -37,4 +37,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
