@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 async function fetchGitHubUsers() {
-  const res = await fetch("http://localhost:5232/api/Employee");
-  //const res = await fetch("https://api.github.com/search/users?q=greg");
+  //const res = await fetch("http://localhost:5232/api/Employee");
+  const res = await fetch("https://api.github.com/search/users?q=greg");
   const json = await res.json();
-  return json;
+  return json.items;
 }
 
 const GitHubUsersPage = async () => {
@@ -29,15 +29,17 @@ const GitHubUsersPage = async () => {
                     </div>
                   </div>
                   <div>
-                    <div className="font-bold"> {user.employeeFirstName}</div>
-                    <div className="text-sm opacity-50">
-                      {user.employeeLastName}
-                    </div>
+                    <div className="font-bold"> {user.login}</div>
+                    <div className="text-sm opacity-50">{user.id}</div>
                   </div>
                 </div>
               </td>
               <td></td>
-              <th> Go to Repos </th>
+              <th>
+                <Link href={`/githubusers/${user.login}`} className="btn btn-link">
+                  Go to Repos
+                </Link>
+              </th>
             </tr>
           ))}
         </tbody>
