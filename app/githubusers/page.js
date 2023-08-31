@@ -3,6 +3,7 @@ import Link from "next/link";
 async function fetchGitHubUsers() {
   //const res = await fetch("http://localhost:5232/api/Employee");
   const res = await fetch("https://api.github.com/search/users?q=greg");
+  await new Promise((resolve) => setTimeout(resolve,5000));
   const json = await res.json();
   return json.items;
 }
