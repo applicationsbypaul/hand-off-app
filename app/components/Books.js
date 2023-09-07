@@ -13,13 +13,12 @@ const Books = () =>  {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
+
   useEffect(() => {
     getBooks().then((books) => {
       setBooks(books)
       setLoading(false)
     });
-    const books = getBooks();
-    setBooks(books);
   }, []);
 
   if (loading) {
