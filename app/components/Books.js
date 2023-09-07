@@ -10,6 +10,13 @@ async function getBooks() {
 }
 const Books = async () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    getBooks().then((books) =>{
+      setBooks(books);
+      setLoading(false);
+    });
+  },[]);
   return (
     <div>
       <h1>Books</h1>
