@@ -8,15 +8,19 @@ async function getBooks() {
   const json = await res.json();
   return json;
 }
+
 const Books = async () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getBooks().then((books) =>{
+    getBooks().then((books) => {
       setBooks(books);
       setLoading(false);
     });
-  },[]);
+  }, []);
+  
+  if(loading){return <LoadingPage/>}
+
   return (
     <div>
       <h1>Books</h1>
