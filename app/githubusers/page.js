@@ -1,14 +1,13 @@
 import Link from "next/link";
 
 async function fetchGitHubUsers() {
+  //await new Promise(resolve  => setTimeout(resolve,1000));
   //const res = await fetch("http://localhost:5232/api/Employee");
   const res = await fetch("https://api.github.com/search/users?q=greg",{
-    next:{
-      revalidate: 60
-    }
   });
-  await new Promise((resolve) => setTimeout(resolve,5000));
+  
   const json = await res.json();
+  
   return json.items;
 }
 
