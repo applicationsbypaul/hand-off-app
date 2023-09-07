@@ -2,6 +2,7 @@
 import { useState, useEffect, Component } from 'react';
 import Link from "next/link";
 import LoadingPage from "../loading";
+import AddBook from "./AddBook";
 
 async function getBooks() {
   const res = await fetch("http://localhost:3000/api/books");
@@ -22,7 +23,6 @@ const Books = () =>  {
   }, []);
 
   if (loading) {
-    console.log(books);
     return <LoadingPage></LoadingPage>;
   };
 
@@ -50,6 +50,7 @@ const Books = () =>  {
           Search
         </button>
       </form>
+      <AddBook/>
       <h1>Books</h1>
       {books.map((book) => (
         <div key={book.id}>
