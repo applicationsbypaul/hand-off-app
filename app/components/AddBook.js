@@ -21,6 +21,11 @@ const AddBook = () => {
       })
     })
 
+    if(res.ok){
+      setNewBookTitle("");
+      setModalOpen(false);
+    }
+
     setNewBookTitle("");
     setNewImg("");
     setNewLink("");
@@ -71,7 +76,6 @@ const AddBook = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            onClick={() => setModalOpen(false)}
           >
             Add Book
           </button>
