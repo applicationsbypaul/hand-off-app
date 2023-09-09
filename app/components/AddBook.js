@@ -3,6 +3,19 @@ import { useState } from "react";
 
 const AddBook = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [newBookTitle, setNewBookTitle] = useState("");
+  const [newImg, setNewImg] = useState("");
+  const [newLink, setNewLink] = useState("");
+
+  const handleSubmitNewBook = (e) => {
+    e.preventDefault();
+    console.log(newBookTitle);
+    console.log(newImg);
+    console.log(newLink);
+    setNewBookTitle("");
+    setNewImg("");
+    setNewLink("");
+  }
   return (
     <div>
       <button className="btn" onClick={() => setModalOpen(true)}>
@@ -12,7 +25,11 @@ const AddBook = () => {
         id="my_modal_3"
         className={`modal ${modalOpen ? "modal-open" : ""}`}
       >
-        <form method="dialog" className="modal-box">
+        <form
+          method="dialog"
+          className="modal-box"
+          onSubmit={handleSubmitNewBook}
+        >
           <button
             onClick={() => setModalOpen(false)}
             htmlFor="my-modal-3"
@@ -21,8 +38,36 @@ const AddBook = () => {
             ✕
           </button>
           <h3 className="font-bold text-lg">Add New Book</h3>
+          <input
+            type="text"
+            value={newBookTitle}
+            onChange={(e) => setNewBookTitle(e.target.value)}
+            placeholder="Enter New Book Title"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            type="text"
+            value={newImg}
+            onChange={(e) => setNewImg(e.target.value)}
+            placeholder="Enter New Img URL"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            type="text"
+            value={newLink}
+            onChange={(e) => setNewLink(e.target.value)}
+            placeholder="Enter New Link"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => setModalOpen(false)}
+          >
+            Add Book
+          </button>
         </form>
       </dialog>
     </div>
-  )};
+  );};
 export default AddBook;
