@@ -15,12 +15,16 @@ const Books = () =>  {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
 
+  const fetchBooks = async () => {
+    const res = await fetch(`/api/books`);
+    const books = await res.json();
+    setBooks(books);
+    setLoading(false);
+  }
+
   useEffect(() => {
-    getBooks().then((books) => {
-      setBooks(books)
-      setLoading(false)
-    });
-  }, []);
+    fetchBooks();
+    },[]);
 
   if (loading) {
     return <LoadingPage></LoadingPage>;
@@ -50,7 +54,7 @@ const Books = () =>  {
           Search
         </button>
       </form>
-      <AddBook/>
+      <AddBook refreshBooks={fetchBooks}/>
       <h1>Books</h1>
       {books.map((book) => (
         <div key={book.id}>
@@ -73,6 +77,5 @@ const Books = () =>  {
       ))}
     </div>
   );
-};
-
+      };
 export default Books;

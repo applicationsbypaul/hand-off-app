@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const AddBook = () => {
+const AddBook = ({refreshBooks}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [newBookTitle, setNewBookTitle] = useState("");
   const [newImg, setNewImg] = useState("");
@@ -16,14 +16,15 @@ const AddBook = () => {
       },
       body:JSON.stringify({
         title: newBookTitle,
-        link: " https://www.amazon.com/dp/B0979MGJ5J",
-        img: " https://via.placeholder.com/600/92c952"
+        link: newLink,
+        img: newImg
       })
     })
 
     if(res.ok){
       setNewBookTitle("");
       setModalOpen(false);
+      refreshBooks();
     }
 
     setNewBookTitle("");
