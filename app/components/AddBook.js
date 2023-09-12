@@ -16,8 +16,8 @@ const AddBook = ({refreshBooks}) => {
       },
       body:JSON.stringify({
         title: newBookTitle,
-        link: " https://www.amazon.com/dp/B0979MGJ5J",
-        img: " https://via.placeholder.com/600/92c952"
+        link: newLink,
+        img: newImg
       })
     })
 
