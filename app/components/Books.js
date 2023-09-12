@@ -40,6 +40,13 @@ const Books = () =>  {
     console.log(query);
   };
 
+  const deleteBook = async(id) => {
+    const res = await fetch(`api/books/${id}`,{
+      method:'DELETE'
+    });
+    fetchBooks();
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
