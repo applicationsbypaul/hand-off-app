@@ -68,7 +68,7 @@ const Books = () =>  {
                 <Link href={book.link} className="btn btn-primary">
                   See in Amazon
                 </Link>
-                <button className="btn btn-error"> Delete </button>
+                <button onClick={()=> deleteBook(book.id)}className="btn btn-error"> Delete </button>
               </div>
             </div>
           </div>
