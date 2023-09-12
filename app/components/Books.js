@@ -40,6 +40,13 @@ const Books = () =>  {
     console.log(query);
   };
 
+  const deleteBook = async(id) => {
+    const res = await fetch(`api/books/${id}`,{
+      method:'DELETE'
+    });
+    fetchBooks();
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -68,7 +75,7 @@ const Books = () =>  {
                 <Link href={book.link} className="btn btn-primary">
                   See in Amazon
                 </Link>
-                <button className="btn btn-error"> Delete </button>
+                <button onClick={()=> deleteBook(book.id)}className="btn btn-error"> Delete </button>
               </div>
             </div>
           </div>
